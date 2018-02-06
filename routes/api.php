@@ -29,9 +29,15 @@ Route::get('group/count', ['as' => 'group.count', 'uses' => 'Api\GroupsControlle
 Route::post('group/updatemulti', ['as' => 'group.updatemulti', 'uses' => 'Api\GroupsController@postUpdateMulti']);
 Route::resource('group','Api\GroupsController');
 
-Route::get('profile/showProfile', ['as' => 'video.showProfile', 'uses' => 'Api\ProfileController@showProfile']);
-Route::get('profile/editProfile', ['as' => 'video.editProfile', 'uses' => 'Api\ProfileController@editProfile']);
-Route::post('profile/updateProfile', ['as' => 'video.updateProfile', 'uses' => 'Api\ProfileController@updateProfile']);
-Route::get('profile/editPassword', ['as' => 'video.editPassword', 'uses' => 'Api\ProfileController@editPassword']);
-Route::post('profile/updatePassword', ['as' => 'video.updatePassword', 'uses' => 'Api\ProfileController@updatePassword']);
+Route::get('profile/showProfile', ['as' => 'profile.showProfile', 'uses' => 'Api\ProfileController@showProfile']);
+Route::get('profile/editProfile', ['as' => 'profile.editProfile', 'uses' => 'Api\ProfileController@editProfile']);
+Route::post('profile/updateProfile', ['as' => 'profile.updateProfile', 'uses' => 'Api\ProfileController@updateProfile']);
+Route::get('profile/editPassword', ['as' => 'profile.editPassword', 'uses' => 'Api\ProfileController@editPassword']);
+Route::post('profile/updatePassword', ['as' => 'profile.updatePassword', 'uses' => 'Api\ProfileController@updatePassword']);
+Route::get('profile/showApiShortestUrl', ['as' => 'profile.showApiShortestUrl', 'uses' => 'Api\ProfileController@showApiShortestUrl']);
+Route::post('profile/updateApiShortestUrl', ['as' => 'profile.updateApiShortestUrl', 'uses' => 'Api\ProfileController@updateApiShortestUrl']);
 Route::resource('profile','Api\ProfileController');
+
+Route::get('link/count', ['as' => 'link.count', 'uses' => 'Api\LinksController@countAll']);
+Route::post('link/updatemulti', ['as' => 'link.updatemulti', 'uses' => 'Api\LinksController@postUpdateMulti']);
+Route::resource('link','Api\LinksController');

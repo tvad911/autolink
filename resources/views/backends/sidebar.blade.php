@@ -44,6 +44,16 @@
                 </ul>
             </li>
 
+            <li class="treeview active">
+                <a href="#">
+                    <i class="fa fa-user"></i> <span> Link</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('admin.link.index') }}"><i class="fa fa-circle-o"></i> Quản lý Link</a></li>
+                </ul>
+            </li>
+
 
             @if(\Auth::user()->group_id == 1)
             <li class="treeview active">
@@ -66,6 +76,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ route('admin.profile.editProfile') }}"><i class="fa fa-circle-o"></i> Edit Profile</a></li>
                     <li><a href="{{ route('admin.profile.editPassword') }}"><i class="fa fa-circle-o"></i> Change Password</a></li>
+                    <li><a href="{{ route('admin.profile.apiShortestUrl') }}"><i class="fa fa-circle-o"></i> Api Shortest Url</a></li>
                 </ul>
             </li>
         </ul>

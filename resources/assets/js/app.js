@@ -19,6 +19,8 @@ Vue.component('index-group', require('./components/backends/groups/Index.vue'));
 Vue.component('index-profile', require('./components/backends/profile/Index.vue'));
 Vue.component('index-editprofile', require('./components/backends/profile/Show.vue'));
 Vue.component('index-changepassword', require('./components/backends/profile/ChangePassword.vue'));
+Vue.component('index-apishortesturl', require('./components/backends/profile/ApiShortestUrl.vue'));
+Vue.component('index-link', require('./components/backends/links/Index.vue'));
 
 var bus = new Vue();
 

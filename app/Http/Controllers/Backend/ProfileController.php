@@ -42,4 +42,13 @@ class ProfileController extends Controller
     {
         return view('backends.profile.editPassword');
     }
+
+    /**
+     * [showProfile description]
+     * @return [type] [description]
+     */
+    public function apiShortestUrl()
+    {
+        return view('backends.profile.shortestUrl');
+    }
 }
