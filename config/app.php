@@ -186,6 +186,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Mbarwick83\Shorty\ShortyServiceProvider::class,
         Signes\Acl\AclServiceProvider::class,
+        Ixudra\Curl\CurlServiceProvider::class,
+        Jelovac\Bitly4laravel\Bitly4laravelServiceProvider::class,
+        Mbarwick83\Shorty\ShortyServiceProvider::class,
     ],
 
     /*
@@ -240,7 +243,10 @@ return [
         'Flash'  => Laracasts\Flash\Flash::class,
         'Image'  => Intervention\Image\Facades\Image::class,
         'Shorty' => Mbarwick83\Shorty\Facades\Shorty::class,
-        'Acl' => Signes\Acl\Facades\Acl::class,
+        'Acl'    => Signes\Acl\Facades\Acl::class,
+        'Curl'   => Ixudra\Curl\Facades\Curl::class,
+        'Bitly' => Jelovac\Bitly4laravel\Facades\Bitly4laravel::class,
+        'Shorty'    => Mbarwick83\Shorty\Facades\Shorty::class,
     ],
 
 ];

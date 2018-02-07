@@ -25,17 +25,17 @@ class LinkCreatedRequest extends FormRequest
     {
         $rules = array(
             'url'           => 'required|min:6|max:256|unique:link,url',
-            '123link'       => 'required|min:6|max:256|unique:link,123link',
-            'shorte'        => 'required|min:6|max:256|unique:link,shorte',
-            'megaurl'       => 'required|min:6|max:256|unique:link,megaurl',
-            'googl_url'     => 'required|min:6|max:256|unique:link,googl_url',
-            'bitly_url'     => 'required|min:6|max:256|unique:link,bitly_url',
-            'anotedpad_url' => 'required|min:6|max:256|unique:link,anotedpad_url',
-            'tiny_url'      => 'required|min:6|max:256|unique:link,tiny_url',
-            'source'        => 'nullable|string|min:6|max:1024',
-            'destination'   => 'nullable|string|min:6|max:1024',
-            'user_id'       => 'required|integer|exists:acl_users,id',
-            'status'        => 'required|integer',
+            // '123link'       => 'required|min:6|max:256|unique:link,123link',
+            // 'shorte'        => 'required|min:6|max:256|unique:link,shorte',
+            // 'megaurl'       => 'required|min:6|max:256|unique:link,megaurl',
+            // 'googl_url'     => 'required|min:6|max:256|unique:link,googl_url',
+            // 'bitly_url'     => 'required|min:6|max:256|unique:link,bitly_url',
+            // 'anotedpad_url' => 'required|min:6|max:256|unique:link,anotedpad_url',
+            // 'tiny_url'      => 'required|min:6|max:256|unique:link,tiny_url',
+            // 'source'        => 'nullable|string|min:6|max:1024',
+            // 'destination'   => 'nullable|string|min:6|max:1024',
+            // 'user_id'       => 'required|integer|exists:acl_users,id',
+            // 'status'        => 'required|integer',
         );
 
         return $rules;

@@ -8,6 +8,7 @@ use App\Models\Link;
 use App\Http\Requests\Api\LinkCountAllRequest;
 use App\Http\Requests\Api\LinkCreatedRequest;
 use App\Http\Requests\Api\LinkUpdatedRequest;
+use App\Helpers\ShortestLink;
 
 class LinksController extends Controller
 {
@@ -98,18 +99,46 @@ class LinksController extends Controller
     public function store(LinkCreatedRequest $request)
     {
         $created = new Link;
+
+        $main_link = null;
+        $api_default = \Auth::guard('api')->user()->api_default;
+
+
+
+    	$a123link = ShortestLink::get123LinkTop($request->url);
+    	$shorte = ShortestLink::getShortest($request->url);
+    	$megaurl = ShortestLink::getMegaUrlIn($request->url);
+
 		$created->url           = $request->url;
-		$created->a123link      = $request->a123link;
-		$created->shorte        = $request->shorte;
-		$created->megaurl       = $request->megaurl;
-		$created->googl_url     = $request->googl_url;
-		$created->bitly_url     = $request->bitly_url;
-		$created->anotedpad_url = $request->anotedpad_url;
-		$created->tiny_url      = $request->tiny_url;
+		$created->a123link      = $a123link;
+		$created->shorte        = $shorte;
+		$created->megaurl       = $megaurl;
+
+		switch($api_default)
+    	{
+    		case '0':
+    			$main_link = $a123link;
+    			break;
+    		case '1':
+    			$main_link = $shorte;
+    			break;
+    		case '2':
+    			$main_link = $megaurl;
+    			break;
+
+    		default:
+    			$main_link = $a123link;
+    			break;
+    	}
+
+		$created->googl_url     = ShortestLink::getGoogl($main_link);
+		$created->bitly_url     = ShortestLink::getBitly($main_link);
+		//$created->anotedpad_url = $request->anotedpad_url;
+		$created->tiny_url      = ShortestLink::getTinyUrl($main_link);
 		$created->source        = $request->source;
 		$created->destination   = $request->destination;
 		$created->user_id       = $this->user_id;
-		$created->status        = $request->status;
+		$created->status        = 1;
         $created->save();
 
         if (request()->wantsJson()) {
@@ -169,18 +198,43 @@ class LinksController extends Controller
     public function update(LinkUpdatedRequest $request, $id)
     {
         $updated = Link::find($id);
-        $updated->url           = $request->url;
-		$updated->a123link      = $request->a123link;
-		$updated->shorte        = $request->shorte;
-		$updated->megaurl       = $request->megaurl;
-		$updated->googl_url     = $request->googl_url;
-		$updated->bitly_url     = $request->bitly_url;
-		$updated->anotedpad_url = $request->anotedpad_url;
-		$updated->tiny_url      = $request->tiny_url;
+        $main_link = null;
+        $api_default = \Auth::guard('api')->user()->api_default;
+
+    	$a123link = ShortestLink::get123LinkTop($request->url);
+    	$shorte = ShortestLink::getShortest($request->url);
+    	$megaurl = ShortestLink::getMegaUrlIn($request->url);
+
+		$updated->url           = $request->url;
+		$updated->a123link      = $a123link;
+		$updated->shorte        = $shorte;
+		$updated->megaurl       = $megaurl;
+
+		switch($api_default)
+    	{
+    		case '0':
+    			$main_link = $a123link;
+    			break;
+    		case '1':
+    			$main_link = $shorte;
+    			break;
+    		case '2':
+    			$main_link = $megaurl;
+    			break;
+
+    		default:
+    			$main_link = $a123link;
+    			break;
+    	}
+
+		$updated->googl_url     = ShortestLink::getGoogl($main_link);
+		$updated->bitly_url     = ShortestLink::getBitly($main_link);
+		//$updated->anotedpad_url = $request->anotedpad_url;
+		$updated->tiny_url      = ShortestLink::getTinyUrl($main_link);
 		$updated->source        = $request->source;
 		$updated->destination   = $request->destination;
 		$updated->user_id       = $this->user_id;
-		$updated->status        = $request->status;
+		$updated->status        = 1;
         $updated->save();
 
         if (request()->wantsJson()) {

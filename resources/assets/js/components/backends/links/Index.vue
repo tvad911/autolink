@@ -392,7 +392,7 @@
 					});
         		}
 
-        		this.createdItem = false;
+        		//this.createdItem = false;
 				this.listItem(this.pagination.currentPage);
             },
 

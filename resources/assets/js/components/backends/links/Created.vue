@@ -47,7 +47,7 @@
                 Hủy
             </a>
         </div>
-        <viewed></viewed>
+        <viewed v-if="viewItem" @viewObject="viewObject"></viewed>
     </form>
 </template>
 
@@ -75,6 +75,9 @@
 					created_at: '',
 					updated_at: ''
         		}),
+                viewItem: false,
+                viewObject: null,
+
         	};
         },
 
@@ -86,6 +89,7 @@
             submitAndClose() {
                 this.form.post(site_url + 'api/link')
                 	.then((res) => {
+                        viewObject = res.created;
             			this.$emit('submitCreated', res);
                 	})
                 	.catch((err) => {

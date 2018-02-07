@@ -60,6 +60,12 @@
 
 <script>
     export default {
+        props: {
+            viewObject:{
+                type: Object,
+                default: null
+            }
+        },
 
         data(){
         	return {
@@ -86,7 +92,23 @@
         methods: {
             cancel() {
                 this.$emit('cancelView');
-            }
+            },
+
+            setValue(){
+                this.form.id = viewObject.id;
+                this.form.url = viewObject.url;
+                this.form.a123link = viewObject.a123link;
+                this.form.shorte = viewObject.shorte;
+                this.form.megaurl = viewObject.megaurl;
+                this.form.googl_url = viewObject.googl_url;
+                this.form.bitly_url = viewObject.bitly_url;
+                this.form.anotedpad_url = viewObject.anotedpad_url;
+                this.form.tiny_url = viewObject.tiny_url;
+                this.form.source = viewObject.source;
+                this.form.destination = viewObject.destination;
+                this.form.user_id = viewObject.user_id;
+                this.form.status = viewObject.status;
+            },
 	    },
     }
 </script>
