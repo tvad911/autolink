@@ -6,16 +6,6 @@ use Mbarwick83\Shorty\Facades\Shorty;
 
 class ShortestLink {
 
-    // protected $user;
-
-    // /**
-    //  * [__construct description]
-    //  */
-    // public function __construct()
-    // {
-    //     $this->user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
-    // }
-
     /**
      * [get123LinkTop description]
      * @param  string $url [description]
@@ -23,9 +13,8 @@ class ShortestLink {
      */
     public static function get123LinkTop(string $url)
     {
-        $user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
         $long_url = urlencode($url);
-        $api_token = $user->api_123link;
+        $api_token = config('shortlink.a123Link');
         $api_url = "http://123link.co/api?api={$api_token}&url={$long_url}";
 
         $result = @json_decode(file_get_contents($api_url),TRUE);
@@ -46,9 +35,8 @@ class ShortestLink {
      */
     public function getMegaUrlIn(string $url)
     {
-        $user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
         $long_url = urlencode($url);
-        $api_token = $user->api_megaurl;
+        $api_token = config('shortlink.megaurl');
         $api_url = "https://megaurl.in/api?api={$api_token}&url={$long_url}";
         $result = @json_decode(file_get_contents($api_url),TRUE);
 
@@ -68,10 +56,8 @@ class ShortestLink {
      */
     public function getShortest(string $url)
     {
-        $user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
-
         $long_url = urlencode($url);
-        $api_token = $user->api_shortes;
+        $api_token = config('shortlink.shortest');
         $curl_url = "https://api.shorte.st/s/".$api_token."/".$long_url;
 
         $ch = curl_init();

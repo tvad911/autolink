@@ -1,4 +1,4 @@
-{{-- Sidebar --}}
+Sidebar --}}
 {{-- Sidebar --}}
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -76,7 +76,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ route('admin.profile.editProfile') }}"><i class="fa fa-circle-o"></i> Edit Profile</a></li>
                     <li><a href="{{ route('admin.profile.editPassword') }}"><i class="fa fa-circle-o"></i> Change Password</a></li>
-                    <li><a href="{{ route('admin.profile.apiShortestUrl') }}"><i class="fa fa-circle-o"></i> Api Shortest Url</a></li>
+                    {{-- <li><a href="{{ route('admin.profile.apiShortestUrl') }}"><i class="fa fa-circle-o"></i> Api Shortest Url</a></li> --}}
                 </ul>
             </li>
         </ul>
@@ -84,4 +84,4 @@
     <!-- /.sidebar -->
 </aside>
 {{-- End Sidebar --}}
-{{-- End Sidebar --}}
+{{-- End Sidebar
