@@ -34,49 +34,78 @@
 
             <div class="form-group" v-bind:class="form.errors.has('a123link')? 'has-error' : ''">
                 <label for="a123link">123Link</label>
-                <input placeholder="a123link" name="url" type="text" id="a123link" class="form-control" v-model="form.a123link">
+                <div class="input-group input-group-sm">
+                    <input placeholder="a123link" name="url" type="text" id="a123link" class="form-control" v-model="form.a123link">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-info btn-flat" v-clipboard="form.a123link">Copy!</button>
+                    </span>
+                </div>
                 <span class="help-block" v-if="form.errors.has('a123link')" v-text="form.errors.get('a123link')"></span>
             </div>
 
             <div class="form-group" v-bind:class="form.errors.has('shorte')? 'has-error' : ''">
                 <label for="shorte">Shortest</label>
-                <input placeholder="shorte" name="url" type="text" id="shorte" class="form-control" v-model="form.shorte">
+                <div class="input-group input-group-sm">
+                    <input placeholder="shorte" name="url" type="text" id="shorte" class="form-control" v-model="form.shorte">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-info btn-flat" v-clipboard="form.shorte">Copy!</button>
+                    </span>
+                </div>
                 <span class="help-block" v-if="form.errors.has('shorte')" v-text="form.errors.get('shorte')"></span>
             </div>
 
             <div class="form-group" v-bind:class="form.errors.has('megaurl')? 'has-error' : ''">
                 <label for="megaurl">Megaurl</label>
-                <input placeholder="megaurl" name="url" type="text" id="megaurl" class="form-control" v-model="form.megaurl">
+                <div class="input-group input-group-sm">
+                    <input placeholder="megaurl" name="url" type="text" id="megaurl" class="form-control" v-model="form.megaurl">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-info btn-flat" v-clipboard="form.megaurl">Copy!</button>
+                    </span>
+                </div>
                 <span class="help-block" v-if="form.errors.has('megaurl')" v-text="form.errors.get('megaurl')"></span>
-            </div>
-
-            <div class="form-group" v-bind:class="form.errors.has('googl_url')? 'has-error' : ''">
-                <label for="googl_url">Googl</label>
-                <input placeholder="googl_url" name="url" type="text" id="googl_url" class="form-control" v-model="form.googl_url">
-                <span class="help-block" v-if="form.errors.has('googl_url')" v-text="form.errors.get('googl_url')"></span>
             </div>
 
             <div class="form-group" v-bind:class="form.errors.has('bitly_url')? 'has-error' : ''">
                 <label for="bitly_url">Bit.ly</label>
-                <input placeholder="bitly_url" name="url" type="text" id="bitly_url" class="form-control" v-model="form.bitly_url">
+                <div class="input-group input-group-sm">
+                    <input placeholder="bitly_url" name="url" type="text" id="bitly_url" class="form-control" v-model="form.bitly_url">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat" v-clipboard="form.anotedpad_url">Copy!</button>
+                    </span>
+                </div>
                 <span class="help-block" v-if="form.errors.has('bitly_url')" v-text="form.errors.get('bitly_url')"></span>
             </div>
 
             <div class="form-group" v-bind:class="form.errors.has('anotedpad_url')? 'has-error' : ''">
                 <label for="anotedpad_url">Anotedpad</label>
-                <input placeholder="anotedpad_url" name="url" type="text" id="anotedpad_url" class="form-control" v-model="form.anotedpad_url">
+                <div class="input-group input-group-sm">
+                    <input placeholder="anotedpad_url" name="url" type="text" id="anotedpad_url" class="form-control" v-model="form.anotedpad_url">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat" v-clipboard="form.anotedpad_url">Copy!</button>
+                    </span>
+                </div>
                 <span class="help-block" v-if="form.errors.has('anotedpad_url')" v-text="form.errors.get('anotedpad_url')"></span>
             </div>
 
             <div class="form-group" v-bind:class="form.errors.has('googl_url')? 'has-error' : ''">
                 <label for="googl_url">Googl</label>
-                <input placeholder="googl_url" name="url" type="text" id="googl_url" class="form-control" v-model="form.googl_url">
+                <div class="input-group input-group-sm">
+                    <input placeholder="googl_url" name="url" type="text" id="googl_url" class="form-control" v-model="form.googl_url">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat" v-clipboard="form.googl_url">Copy!</button>
+                    </span>
+                </div>
                 <span class="help-block" v-if="form.errors.has('googl_url')" v-text="form.errors.get('googl_url')"></span>
             </div>
 
             <div class="form-group" v-bind:class="form.errors.has('tiny_url')? 'has-error' : ''">
                 <label for="tiny_url">Tiny Url</label>
-                <input placeholder="tiny_url" name="url" type="text" id="tiny_url" class="form-control" v-model="form.tiny_url">
+                <div class="input-group input-group-sm">
+                    <input placeholder="tiny_url" name="url" type="text" id="tiny_url" class="form-control" v-model="form.tiny_url">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat" v-clipboard="form.tiny_url">Copy!</button>
+                    </span>
+                </div>
                 <span class="help-block" v-if="form.errors.has('tiny_url')" v-text="form.errors.get('tiny_url')"></span>
             </div>
         </div>
@@ -131,14 +160,18 @@
             setValue(){
             	axios.get(site_url + 'api/link/' + this.id, {}).then((res) => {
 	                    this.form.id = res.data.item.id;
-	                    this.form.email = res.data.item.email;
-	                    this.form.username = res.data.item.username;
-	                    this.form.name = res.data.item.name;
-	                    this.form.group_id = res.data.item.group_id;
-	                    this.form.status = res.data.item.status;
-	                    this.form.created_at = res.data.item.created_at;
-	                    this.form.updated_at = res.data.item.updated_at;
-	                    this.form.deleted_at = res.data.item.deleted_at;
+                        this.form.url = res.data.item.url;
+                        this.form.a123link = res.data.item.a123link;
+                        this.form.shorte = res.data.item.shorte;
+                        this.form.megaurl = res.data.item.megaurl;
+                        this.form.googl_url = res.data.item.googl_url;
+                        this.form.bitly_url = res.data.item.bitly_url;
+                        this.form.anotedpad_url = res.data.item.anotedpad_url;
+                        this.form.tiny_url = res.data.item.tiny_url;
+                        this.form.source = res.data.item.source;
+                        this.form.destination = res.data.item.destination;
+                        this.form.user_id = res.data.item.user_id;
+                        this.form.status = res.data.item.status;
 	                }).catch((err) => console.error(err));
             },
 	    },

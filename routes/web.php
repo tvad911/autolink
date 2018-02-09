@@ -11,36 +11,37 @@
 |
 */
 use Ixudra\Curl\Facades\Curl;
+
 Route::get('/', function () {
     //return view('welcome');
-	//$long_url = urlencode('http://youtube.test/admin/stream');
-	// $long_url = "http://youtube.test/admin/stream";
- //    $api_token = 'aa457fc9f526a581bec02efb9f9197c9';
- //    $response = Curl::to('https://api.shorte.st/v1/data/url')
- //       	->withHeader('public-api-token: aa457fc9f526a581bec02efb9f9197c9')
- //       	->withData(array('urlToShorten' => "http://youtube.test/admin/stream"))
- //       	//->withContentType('application/json')
- //       	// ->asJson()
- //       	->put();
+	// $long_url = urlencode('https://www.youtube.com/watch?v=fngk6-I-Bc4');
+ //    $api_token = '7365e35e0e326060ea46486d2a3b217e84075620';
+ //    $api_url = "http://123link.co/api?api={$api_token}&url={$long_url}&alias=CustomAlias";
+ //    $result = @json_decode(file_get_contents($api_url),TRUE);
 
- //   dd($response);
+ //    dd($api_url);
+    // if($result["status"] === 'error') {
+    //  echo $result["message"];
+    // } else {
+    //  echo $result["shortenedUrl"];
+    // }
+    // $long_url = urlencode('https://shorte.st/login');
+    // $api_token = 'af35ed0994ef0128f31ea30ee7f59c68b71fa6da';
+    // $api_url = "https://megaurl.in/api?api={$api_token}&url={$long_url}&alias=CustomAlias";
+    // $result = @json_decode(file_get_contents($api_url),TRUE);
 
- //    $result = @json_decode($response,TRUE);
-
- //    dd($result);
-    $long_url = urlencode('yourdestinationlink.com');
-    $api_token = '7365e35e0e326060ea46486d2a3b217e84075620';
-    $api_url = "http://123link.co/api?api={$api_token}&url={$long_url}&alias=CustomAlias";
+    // dd($result);
+    $long_url = urlencode('biquyetmuasam.com');
+    $api_token = 'af35ed0994ef0128f31ea30ee7f59c68b71fa6da';
+    $api_url = "https://megaurl.in/api?api={$api_token}&url={$long_url}&alias=CustomAlias";
     $result = @json_decode(file_get_contents($api_url),TRUE);
 
-    //dd($result);
-    if($result['status'] == 'error')
-    {
-        echo $result['message'];
-    }
-    else{
-        echo $result['shortenedUrl'];
-    }
+    dd($result);
+    // if($result["status"] === 'error') {
+    //     echo $result["message"];
+    // } else {
+    //     echo $result["shortenedUrl"];
+    // }
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {

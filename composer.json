@@ -10,7 +10,6 @@
         "guzzlehttp/guzzle": "^6.2",
         "intervention/image": "^2.4",
         "ixudra/curl": "^6.16",
-        "jelovac/bitly4laravel": "3.*",
         "laracasts/flash": "^2.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
@@ -19,6 +18,7 @@
         "mbarwick83/shorty": "^2.0",
         "nesbot/carbon": "~1.14",
         "php-ffmpeg/php-ffmpeg": "^0.9.5",
+        "shivella/laravel-bitly": "^1.0",
         "signes/acl": "^2.0.0"
     },
     "require-dev": {

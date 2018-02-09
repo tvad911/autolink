@@ -6,15 +6,15 @@ use Mbarwick83\Shorty\Facades\Shorty;
 
 class ShortestLink {
 
-    protected $user;
+    // protected $user;
 
-    /**
-     * [__construct description]
-     */
-    public function __construct()
-    {
-        $this->user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
-    }
+    // /**
+    //  * [__construct description]
+    //  */
+    // public function __construct()
+    // {
+    //     $this->user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
+    // }
 
     /**
      * [get123LinkTop description]
@@ -23,9 +23,10 @@ class ShortestLink {
      */
     public static function get123LinkTop(string $url)
     {
+        $user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
         $long_url = urlencode($url);
-        $api_token = $this->user->api_123link;
-        $api_url = "http://123link.co/api?api={$api_token}&url={$long_url}&alias=CustomAlias";
+        $api_token = $user->api_123link;
+        $api_url = "http://123link.co/api?api={$api_token}&url={$long_url}";
 
         $result = @json_decode(file_get_contents($api_url),TRUE);
 
@@ -45,9 +46,10 @@ class ShortestLink {
      */
     public function getMegaUrlIn(string $url)
     {
+        $user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
         $long_url = urlencode($url);
-        $api_token = $this->user->api_megaurl;
-        $api_url = "https://megaurl.in/api?api={$api_token}&url={$long_url}&alias=CustomAlias";
+        $api_token = $user->api_megaurl;
+        $api_url = "https://megaurl.in/api?api={$api_token}&url={$long_url}";
         $result = @json_decode(file_get_contents($api_url),TRUE);
 
         if($result['status'] == 'error')
@@ -66,10 +68,10 @@ class ShortestLink {
      */
     public function getShortest(string $url)
     {
-        $this->user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
+        $user = \Auth::guard('api')->user() ? \Auth::guard('api')->user() : null;
 
         $long_url = urlencode($url);
-        $api_token = $this->user->api_shortes;
+        $api_token = $user->api_shortes;
         $curl_url = "https://api.shorte.st/s/".$api_token."/".$long_url;
 
         $ch = curl_init();
@@ -79,7 +81,7 @@ class ShortestLink {
         $result = curl_exec($ch);
         curl_close($ch);
 
-        $array = @json_decode($result, TRUE);
+        $array = @json_decode($result);
 
         $shortest = $array->shortenedUrl;
 
@@ -93,13 +95,7 @@ class ShortestLink {
      */
     public function getBitly(string $url)
     {
-        $data =  @json_decode(Bitly::shorten($url));
-
-        if($data->status_code !== '200') {
-            return $data->data->expand->short_url;
-        } else {
-            return $data->data->expand->short_url;
-        }
+        return \Bitly::getUrl($url);
     }
 
     /**

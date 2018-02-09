@@ -35,7 +35,7 @@
             <div class="form-group" v-bind:class="form.errors.has('shortLink')? 'has-error' : ''">
                 <label for="shortLink"></label>
                 <span class="form-control">
-                    <input type="checkbox" id="shortLink" name="shortLink" v-model="form.shortLink" checked=""> Tạo link rút gọn
+                    <input type="checkbox" id="shortLink" name="shortLink" v-model="form.shortLink" checked="checked"> Tạo link rút gọn
                 </span>
                 <span class="help-block" v-if="form.errors.has('shortLink')" v-text="form.errors.get('shortLink')"></span>
             </div>
@@ -47,7 +47,7 @@
                 Hủy
             </a>
         </div>
-        <viewed v-if="viewItem" @viewObject="viewObject"></viewed>
+        <viewed v-if="viewItem" :viewObject="viewObject"></viewed>
     </form>
 </template>
 
@@ -77,7 +77,6 @@
         		}),
                 viewItem: false,
                 viewObject: null,
-
         	};
         },
 
@@ -87,14 +86,17 @@
             },
 
             submitAndClose() {
+                this.$emit('dataLoading');
                 this.form.post(site_url + 'api/link')
                 	.then((res) => {
-                        viewObject = res.created;
+                        this.viewObject = res.created;
+                        this.viewItem = true;
             			this.$emit('submitCreated', res);
                 	})
                 	.catch((err) => {
                 		console.error(err);
                 	});
+                this.$emit('loadingDone');
             },
 	    },
     }

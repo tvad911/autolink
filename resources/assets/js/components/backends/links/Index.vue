@@ -7,9 +7,10 @@
 	            <div class="col-xs-12">
 	                <!-- /.box -->
 	                <div class="box">
-	                	<created v-if="createdItem" @cancelAdd="closeCreatedItem" @submitCreated="submitCreatedItem"></created>
+	                	<rotate-square2 v-if="loading"></rotate-square2>
+	                	<created v-if="createdItem" @cancelAdd="closeCreatedItem" @submitCreated="submitCreatedItem" @dataLoading="dataLoading" @loadingDone="loadingDone"></created>
 						<!-- <show v-if="editedItem != 0" :id="editedItem" :item="item" @closeShowed="closeShowedItem" @submitUpdated="submitUpdateItem"></show> -->
-						<show v-if="editedItem != 0" @cancelShow="closeShowedItem"></show>
+						<show v-if="editedItem != 0" :id="editedItem" :item="item" @closeShowed="closeShowedItem" @submitUpdated="submitUpdateItem"></show>
 						<boxheader @openCreatedItem="openCreatedItem">
 							List Link
 						</boxheader>
@@ -109,13 +110,14 @@
 	import show from './Show.vue';
 	// import Toastr
 	import Toastr from 'vue-toastr';
+	import {RotateSquare2} from 'vue-loading-spinner';
 	// import toastr less file: need webpack less-loader
 	require('vue-toastr/src/vue-toastr.less');
 	// Register vue component
 	Vue.component('vue-toastr',Toastr);
 
     export default {
-        components: { actionbackend, paginate, headermodule, boxheader, deleted, 'vue-toastr': Toastr, created, show },
+        components: { actionbackend, paginate, headermodule, boxheader, deleted, 'vue-toastr': Toastr, created, show, RotateSquare2 },
 
         data() {
         	return {
@@ -170,6 +172,7 @@
         		createdItem: false,
         		editedItem: 0,
         		doAction: 'publish',
+        		loading: false,
         	};
         },
 
@@ -208,7 +211,7 @@
         methods: {
         	listItem: _.debounce(
         		function(page){
-    				let pageTitle = 'Admin LTE | List User - Page '+ page;
+    				let pageTitle = 'Admin LTE | List Link - Page '+ page;
         			axios.get(site_url + 'api/link', {
 	    				params: {
 							keyword: this.search.keyword,
@@ -450,6 +453,14 @@
                     this.countAll();
                 }).catch((err) => console.error(err));
             },
+
+            dataLoading(){
+            	this.loading = true;
+            },
+
+            loadingDone(){
+            	this.loading = false;
+            }
 	    }
     }
 </script>

@@ -22,6 +22,10 @@ Vue.component('index-changepassword', require('./components/backends/profile/Cha
 Vue.component('index-apishortesturl', require('./components/backends/profile/ApiShortestUrl.vue'));
 Vue.component('index-link', require('./components/backends/links/Index.vue'));
 
+import VueClipboards from 'vue-clipboards';
+
+Vue.use(VueClipboards);
+
 var bus = new Vue();
 
 const app = new Vue({

@@ -103,11 +103,11 @@ class LinksController extends Controller
         $main_link = null;
         $api_default = \Auth::guard('api')->user()->api_default;
 
+        $shortLink = new ShortestLink;
 
-
-    	$a123link = ShortestLink::get123LinkTop($request->url);
-    	$shorte = ShortestLink::getShortest($request->url);
-    	$megaurl = ShortestLink::getMegaUrlIn($request->url);
+		$a123link = $shortLink->get123LinkTop($request->url);
+		$shorte   = $shortLink->getShortest($request->url);
+		$megaurl  = $shortLink->getMegaUrlIn($request->url);
 
 		$created->url           = $request->url;
 		$created->a123link      = $a123link;
@@ -131,10 +131,11 @@ class LinksController extends Controller
     			break;
     	}
 
-		$created->googl_url     = ShortestLink::getGoogl($main_link);
-		$created->bitly_url     = ShortestLink::getBitly($main_link);
-		//$created->anotedpad_url = $request->anotedpad_url;
-		$created->tiny_url      = ShortestLink::getTinyUrl($main_link);
+		$created->googl_url     = $shortLink->getGoogl($main_link);
+		//$created->googl_url     = null;
+		$created->bitly_url     = $shortLink->getBitly($main_link);
+		$created->anotedpad_url = $request->anotedpad_url;
+		$created->tiny_url      = $shortLink->getTinyUrl($main_link);
 		$created->source        = $request->source;
 		$created->destination   = $request->destination;
 		$created->user_id       = $this->user_id;
